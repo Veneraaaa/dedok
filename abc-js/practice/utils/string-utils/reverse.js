@@ -1,9 +1,13 @@
 /** Возвращает "развернутую" копию text */
-export function reverse(text) {
-if(typeof text !== 'string') throw Error('argument must be type of string'); 
 
+import { len } from "./len.js";
+
+
+export function reverse(text) {
+    const lenText = len(text);
     let newStr = '';
-    for (let i = text.length - 1; i >= 0; i--) {
+    
+    for (let i = lenText - 1; i >= 0; i--) {
       newStr += text[i];
     }
     return newStr;
