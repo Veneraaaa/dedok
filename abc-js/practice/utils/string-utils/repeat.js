@@ -1,3 +1,10 @@
-/** Возвращает text повторенный count раз. */
+import { checkFileRepeat } from "./common.js";
 export function repeat(text, count = 1) {
+    checkFileRepeat(text, count); 
+
+    let retValue = '';
+    for (let i = 0; i < count; i++) {
+        retValue += text;
+    }
+    return retValue;
 }
