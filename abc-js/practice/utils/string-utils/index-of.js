@@ -4,4 +4,13 @@
  * Параметр index задает начальную индекс с которой необходимо
  * начать поиск.*/
 export function indexOf(text, searchString, index=0) {
+  for (let i = 0; i < text.length; i++) {
+   
+    if (text[i] !== searchString) {
+      return index++;
+    }
+    else {
+        break;
+    }
+  }
 }
