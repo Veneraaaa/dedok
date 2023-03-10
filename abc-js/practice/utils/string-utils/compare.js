@@ -1,10 +1,11 @@
 
 /** возвращает булевый ответ равны ли параметры firstText и secondText. */
 import { len } from "./len.js";
-import { checkString } from "./common.js";
+import { checkIsString } from "./common.js";
 
 export function isEqual(firstText, secondText) {
-    checkString(firstText, secondText)
+    checkIsString(secondText);
+    checkIsString(firstText);
 
     if (len(firstText) !== len(secondText)) return false;
     const cycleLength = len(firstText) < len(secondText) ? len(firstText) : len(secondText);
@@ -22,7 +23,8 @@ export function isNotEqual(firstText, secondText) {
 
 /** возвращает булевый ответ больше ли параметр firstText чем secondText. */
 export function isMore(firstText, secondText) {
-    checkString(firstText, secondText);
+    checkIsString(firstText)
+    checkIsString(secondText);
 
     const lenFirstText = len(firstText);
     const lenSecondText = len(secondText);
