@@ -46,3 +46,4 @@ export function checkStrCode (text, start, end) {
    if (typeof end !== 'number' || end % 1 !== 0 || end < 0) throw Error ('invalid end index');
    if (start > end) throw Error ('invalid start and end index');
 }
+
