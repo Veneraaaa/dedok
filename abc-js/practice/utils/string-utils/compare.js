@@ -7,8 +7,11 @@ export function isEqual(firstText, secondText) {
     checkIsString(secondText);
     checkIsString(firstText);
 
-    if (len(firstText) !== len(secondText)) return false;
-    const cycleLength = len(firstText) < len(secondText) ? len(firstText) : len(secondText);
+    const lenFirstText = len(firstText);
+    const lenSecondText = len(secondText);
+
+    if (lenFirstText !== lenSecondText) return false;
+    const cycleLength = lenFirstText < lenSecondText ? lenFirstText : lenSecondText
 
     for (let index = 0; index < cycleLength; index++) {
         if (firstText[index] !== secondText[index]) return false;
