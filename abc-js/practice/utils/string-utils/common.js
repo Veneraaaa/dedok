@@ -30,3 +30,7 @@ export function checkIsString(text) {
    if (typeof text !== 'string' ) throw Error('argument must be type of string')
 }
 
+export function isString(text, parName) {
+   if(typeof text !== 'string') throw Error (`argument${parName ?? ''} must be type of string`);
+ }
+

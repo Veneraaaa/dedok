@@ -1,6 +1,6 @@
-function isString(text, parName) {
-    if(typeof text !== 'string') throw Error (`argument${parName ?? ''} must be type of string`);
-  }
+import { isString } from "./common.js";
+import { indexOf } from "./index-of.js";
+import { substring } from "./substring.js";
 /** Возвращает строку text, где первое вхождение search поменяно на target.
  * text: строка, копию которой нужно получить.
  * search: строка которое нужно поменять.
@@ -12,13 +12,11 @@ export function replace(text, search, target) {
 
     let  len = search.length;
     if (!text.includes(search)) return text;
-    for (let i = 0; i < len; i++) {
-      i = text.indexOf(search, i);
-      let firstText = text.substring(0, i);
-      let secondText = text.substring(i + len);
+    
+    for (let i = 0; i < len; i += len) {
+      i = indexOf(text, search);
       if (i !== -1) {
-        text = firstText + target + secondText;
-        i += len;
+        text = substring(text, 0, i) + target + substring(text, i + len);
       } 
     }
     return text;
@@ -32,12 +30,11 @@ export function replaceAll(text, search, target) {
     isString(text, ' text');
     isString(search, ' search');
     isString(target, ' target');
+    
     if (!text.includes(search)) return text;
-    let  len = search.length;
-    let index = text.indexOf(search);
-    while (index !== -1) {
-        text = text.substr(0, index) + target + text.substr(index + len);
-        index = text.indexOf(search, index + target.length);
-    }
+
+    for (let i = text.indexOf(search); i > -1; i = text.indexOf(search, i + target.length)) {
+      text = replace(text, search, target)
+  }
     return text;
 }

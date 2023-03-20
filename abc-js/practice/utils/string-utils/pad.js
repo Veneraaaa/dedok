@@ -1,7 +1,10 @@
+import { repeat } from "./repeat.js"
 /** Возвращает копию text увеличенный до длины maxLength
  * заполненный в начале символами fillString.
  * Допускается в fillString передавать строку из нескольких символов. */
 export function padStart(text, maxLength, fillString = ' ') {
+    a = fillString.repeat(maxLength) + text;
+return a;
 }
 
 /** Возвращает копию text увеличенный до длины maxLength
